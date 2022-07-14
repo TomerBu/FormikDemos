@@ -39,7 +39,7 @@ const Login = () => {
       initialValues={initialValues}
       onSubmit={onSubmit}
     >
-      <form onSubmit={formik.handleSubmit} className={styles["login-form"]}>
+      <Form className={styles["login-form"]}>
         <section className={styles["form-group"]}>
           <label htmlFor="username">User Name</label>
           <input
@@ -87,7 +87,7 @@ const Login = () => {
           className={`${styles.btn} btn btn-lg btn-danger`}
           type="submit"
         />
-      </form>
+      </Form>
     </Formik>
   );
 };
