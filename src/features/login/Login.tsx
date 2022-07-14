@@ -9,31 +9,30 @@ const validationSchema = Yup.object({
     .required("Required")
     .min(3, "Must contain at least 3 characters"),
 });
+
+const initialValues = {
+  username: "",
+  email: "",
+  password: "",
+};
+
+interface FormValues {
+  username: string;
+  email: string;
+  password: string;
+}
+
+const onSubmit = (values: FormValues) => {
+  console.log(values);
+};
+
 const Login = () => {
   const formik = useFormik({
-    initialValues: {
-      username: "",
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    initialValues,
+    onSubmit,
     validationSchema,
-    // validate: (values) => {
-    //   let errors = { email: "", username: "", password: "" };
-    //   for (let key in errors) {
-    //     let keyConst = key as keyof typeof values;
-    //     if (values[keyConst].length === 0) {
-    //       errors[keyConst] = "Required";
-    //     }
-    //   }
-    //   return errors;
-    // },
   });
 
-  //take note of the values:
-  console.log(formik.values);
   return (
     <form onSubmit={formik.handleSubmit} className={styles["login-form"]}>
       <section className={styles["form-group"]}>
