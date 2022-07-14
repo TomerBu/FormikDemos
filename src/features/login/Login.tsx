@@ -1,5 +1,5 @@
 import styles from "./Login.module.scss";
-import { Form, Formik, useFormik } from "formik";
+import { Field, Form, Formik, useFormik } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
@@ -42,9 +42,8 @@ const Login = () => {
       <Form className={styles["login-form"]}>
         <section className={styles["form-group"]}>
           <label htmlFor="username">User Name</label>
-          <input
+          <Field
             autoComplete="username"
-            {...formik.getFieldProps("username")}
             type="text"
             name="username"
             id="username"
@@ -57,13 +56,7 @@ const Login = () => {
 
         <section className={styles["form-group"]}>
           <label htmlFor="email">User Email</label>
-          <input
-            autoComplete="email"
-            {...formik.getFieldProps("email")}
-            type="email"
-            name="email"
-            id="email"
-          />
+          <Field autoComplete="email" type="email" name="email" id="email" />
           {formik.touched.email && formik.errors.email && (
             <div>{formik.errors.email}.</div>
           )}
@@ -71,9 +64,8 @@ const Login = () => {
 
         <section className={styles["form-group"]}>
           <label htmlFor="password">Password</label>
-          <input
+          <Field
             autoComplete="current-password"
-            {...formik.getFieldProps("password")}
             type="password"
             name="password"
             id="password"
