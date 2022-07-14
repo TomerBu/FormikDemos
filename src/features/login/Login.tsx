@@ -1,21 +1,53 @@
 import styles from "./Login.module.scss";
- 
+import { useFormik } from "formik";
+
 const Login = () => {
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  //take note of the values:
+  console.log(formik.values);
   return (
-    <form className={styles["login-form"]}>
+    <form onSubmit={formik.handleSubmit} className={styles["login-form"]}>
       <section className={styles["form-group"]}>
         <label htmlFor="username">User Name</label>
-        <input type="text" name="username" id="username" />
+        <input
+          onChange={formik.handleChange}
+          value={formik.values.username}
+          type="text"
+          name="username"
+          id="username"
+        />
       </section>
 
       <section className={styles["form-group"]}>
         <label htmlFor="email">User Email</label>
-        <input type="email" name="email" id="email" />
+        <input
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          type="email"
+          name="email"
+          id="email"
+        />
       </section>
 
       <section className={styles["form-group"]}>
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          type="password"
+          name="password"
+          id="password"
+        />
       </section>
 
       <input className={`${styles.btn} btn btn-lg btn-danger`} type="submit" />
