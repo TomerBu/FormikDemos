@@ -37,6 +37,7 @@ const Login = () => {
       <section className={styles["form-group"]}>
         <label htmlFor="username">User Name</label>
         <input
+          onBlur={formik.handleBlur}
           autoComplete="username"
           onChange={formik.handleChange}
           value={formik.values.username}
@@ -44,13 +45,16 @@ const Login = () => {
           name="username"
           id="username"
         />
-        
-        {formik.errors.username &&  <div>Please select a valid username.</div>}
+
+        {formik.touched.username && formik.errors.username && (
+          <div>Please select a valid username.</div>
+        )}
       </section>
 
       <section className={styles["form-group"]}>
         <label htmlFor="email">User Email</label>
         <input
+          onBlur={formik.handleBlur}
           autoComplete="email"
           onChange={formik.handleChange}
           value={formik.values.email}
@@ -58,12 +62,15 @@ const Login = () => {
           name="email"
           id="email"
         />
-        {formik.errors.email && <div>Please select a valid Email.</div>}
+        {formik.touched.email && formik.errors.email && (
+          <div>Please select a valid Email.</div>
+        )}
       </section>
 
       <section className={styles["form-group"]}>
         <label htmlFor="password">Password</label>
         <input
+          onBlur={formik.handleBlur}
           autoComplete="current-password"
           onChange={formik.handleChange}
           value={formik.values.password}
@@ -71,7 +78,9 @@ const Login = () => {
           name="password"
           id="password"
         />
-        {formik.errors.password && <div>Please select a valid password.</div>}
+        {formik.touched.password && formik.errors.password && (
+          <div>Please select a valid password.</div>
+        )}
       </section>
 
       <input className={`${styles.btn} btn btn-lg btn-danger`} type="submit" />
