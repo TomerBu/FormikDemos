@@ -1,0 +1,52 @@
+$purple: purple;
+$text-color: #555;
+$bg-color: #fff;
+$orange: orange;
+$shadow-color: gainsboro;
+
+.login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px 2px $shadow-color;
+  padding: 1rem;
+  width: 25%;
+  margin: 0 auto;
+}
+
+.form-group {
+  width: 90%;
+  margin: 4px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px 2px $shadow-color;
+  padding: 1rem;
+}
+
+// submit button is outside a group
+.login-form > .btn {
+  margin-top: 8px;
+  width: 90%;
+}
+
+.form-group input {
+  border: 1px solid $purple;
+  border-radius: 8px;
+  font-size: x-large;
+  padding: 4px 8px;
+  color: $text-color;
+  background-color: $bg-color;
+  background-image: none;
+}
+
+input:focus-visible {
+  outline: -webkit-focus-ring-color auto 1px;
+  outline-color: $orange;
+  outline-style: auto;
+  outline-width: 1px;
+}
