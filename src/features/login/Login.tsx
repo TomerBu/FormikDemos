@@ -1,6 +1,14 @@
 import styles from "./Login.module.scss";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
+const validationSchema = Yup.object({
+  username: Yup.string().required("Required"),
+  email: Yup.string().required("Required").email("Invalid Email"),
+  password: Yup.string()
+    .required("Required")
+    .min(3, "Must contain at least 3 characters"),
+});
 const Login = () => {
   const formik = useFormik({
     initialValues: {
@@ -11,23 +19,17 @@ const Login = () => {
     onSubmit: (values) => {
       console.log(values);
     },
-    validate: (values) => {
-      let errors = { email: "", username: "", password: "" };
-      // if (values.email.length === 0) {
-      //   errors.email = "Required";
-      // }
-      // if (values.password.length === 0) {
-      //   errors.password = "Required";
-      // }
-
-      for (let key in errors) {
-        let keyConst = key as keyof typeof values;
-        if (values[keyConst].length === 0) {
-          errors[keyConst] = "Required";
-        }
-      }
-      return errors;
-    },
+    validationSchema,
+    // validate: (values) => {
+    //   let errors = { email: "", username: "", password: "" };
+    //   for (let key in errors) {
+    //     let keyConst = key as keyof typeof values;
+    //     if (values[keyConst].length === 0) {
+    //       errors[keyConst] = "Required";
+    //     }
+    //   }
+    //   return errors;
+    // },
   });
 
   //take note of the values:
@@ -47,7 +49,7 @@ const Login = () => {
         />
 
         {formik.touched.username && formik.errors.username && (
-          <div>Please select a valid username.</div>
+          <div>{formik.errors.username}</div>
         )}
       </section>
 
@@ -63,7 +65,7 @@ const Login = () => {
           id="email"
         />
         {formik.touched.email && formik.errors.email && (
-          <div>Please select a valid Email.</div>
+          <div>{formik.errors.email}.</div>
         )}
       </section>
 
@@ -79,7 +81,7 @@ const Login = () => {
           id="password"
         />
         {formik.touched.password && formik.errors.password && (
-          <div>Please select a valid password.</div>
+          <div>{formik.errors.password}</div>
         )}
       </section>
 
