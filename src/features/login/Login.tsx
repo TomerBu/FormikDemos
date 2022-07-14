@@ -39,10 +39,8 @@ const Login = () => {
       <section className={styles["form-group"]}>
         <label htmlFor="username">User Name</label>
         <input
-          onBlur={formik.handleBlur}
           autoComplete="username"
-          onChange={formik.handleChange}
-          value={formik.values.username}
+          {...formik.getFieldProps("username")}
           type="text"
           name="username"
           id="username"
@@ -56,10 +54,8 @@ const Login = () => {
       <section className={styles["form-group"]}>
         <label htmlFor="email">User Email</label>
         <input
-          onBlur={formik.handleBlur}
           autoComplete="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
+          {...formik.getFieldProps("email")}
           type="email"
           name="email"
           id="email"
@@ -72,10 +68,8 @@ const Login = () => {
       <section className={styles["form-group"]}>
         <label htmlFor="password">Password</label>
         <input
-          onBlur={formik.handleBlur}
           autoComplete="current-password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
+          {...formik.getFieldProps("password")}
           type="password"
           name="password"
           id="password"
