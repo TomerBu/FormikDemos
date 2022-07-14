@@ -3,7 +3,7 @@ import Login from "./features/login/Login";
 function App() {
   return (
     <div className="App">
-      <Login name="Tomer" />
+      <Login/>
     </div>
   );
 }
