@@ -1,5 +1,5 @@
 import styles from "./Login.module.scss";
-import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
@@ -8,12 +8,14 @@ const validationSchema = Yup.object({
   password: Yup.string()
     .required("Required")
     .min(3, "Must contain at least 3 characters"),
+  address: Yup.string().required("required"),
 });
 
 const initialValues = {
   username: "",
   email: "",
   password: "",
+  address: "",
 };
 
 interface FormValues {
@@ -27,12 +29,6 @@ const onSubmit = (values: FormValues) => {
 };
 
 const Login = () => {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
-
   return (
     <Formik
       validationSchema={validationSchema}
@@ -67,6 +63,18 @@ const Login = () => {
             id="password"
           />
           <ErrorMessage name="password" />
+        </section>
+
+        <section className={styles["form-group"]}>
+          <label htmlFor="address">Address</label>
+          <Field
+            as="textarea"
+            autoComplete="address"
+            type="text"
+            name="address"
+            id="address"
+          />
+          <ErrorMessage name="address" />
         </section>
 
         <input
