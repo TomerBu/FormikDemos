@@ -1,5 +1,5 @@
 import styles from "./Login.module.scss";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
@@ -67,13 +67,21 @@ const Login = () => {
 
         <section className={styles["form-group"]}>
           <label htmlFor="address">Address</label>
-          <Field
-            as="textarea"
-            autoComplete="address"
-            type="text"
-            name="address"
-            id="address"
-          />
+          <Field name="address">
+            {(props: FieldProps) => {
+              const {
+                field /* { name, value, onChange, onBlur }*/,
+                form /*{ touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc. */,
+                meta /*value error touched initialValue */,
+              } = props;
+
+              return (
+                <div>
+                  <input id="address" {...field} />
+                </div>
+              );
+            }}
+          </Field>
           <ErrorMessage name="address" />
         </section>
 
