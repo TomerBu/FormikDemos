@@ -1,6 +1,7 @@
 import styles from "./Login.module.scss";
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import * as Yup from "yup";
+import FormErrorLabel from "./FormErrorLabel";
 
 const validationSchema = Yup.object({
   username: Yup.string().required("Required"),
@@ -62,7 +63,7 @@ const Login = () => {
             name="password"
             id="password"
           />
-          <ErrorMessage name="password" />
+          <ErrorMessage name="password" component={FormErrorLabel} />
         </section>
 
         <section className={styles["form-group"]}>
