@@ -46,7 +46,9 @@ const Login = () => {
             id="username"
           />
 
-          <ErrorMessage name="username" />
+          <ErrorMessage name="username">
+            {(msg) => <div className={styles.error}>{msg}</div>}
+          </ErrorMessage>
         </section>
 
         <section className={styles["form-group"]}>

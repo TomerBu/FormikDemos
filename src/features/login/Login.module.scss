@@ -3,6 +3,11 @@ $text-color: #555;
 $bg-color: #fff;
 $orange: orange;
 $shadow-color: gainsboro;
+$red: red;
+
+.error {
+  color: $red;
+}
 
 .login-form {
   display: flex;
