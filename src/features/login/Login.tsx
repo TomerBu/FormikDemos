@@ -78,11 +78,11 @@ const Login = () => {
               return (
                 <div>
                   <input id="address" {...field} />
+                  {meta.touched && meta.error && <div>{meta.error}</div>}
                 </div>
               );
             }}
           </Field>
-          <ErrorMessage name="address" />
         </section>
 
         <input
