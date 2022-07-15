@@ -17,12 +17,21 @@ const initialValues = {
   email: "",
   password: "",
   address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
 };
 
 interface FormValues {
   username: string;
   email: string;
   password: string;
+  address: string;
+  social: {
+    facebook: string;
+    twitter: string;
+  };
 }
 
 const onSubmit = (values: FormValues) => {
@@ -86,6 +95,16 @@ const Login = () => {
               );
             }}
           </Field>
+        </section>
+
+        <section className={styles["form-group"]}>
+          <label htmlFor="facebook">Facebook</label>
+          <Field type="text" name="social.facebook" id="facebook" />
+        </section>
+
+        <section className={styles["form-group"]}>
+          <label htmlFor="twitter">Twitter</label>
+          <Field type="text" name="social.twitter" id="twitter" />
         </section>
 
         <input
